@@ -1,0 +1,16 @@
+https://www.baeldung.com/kotlin/native#:~:text=Kotlin%2FNative%20is%20an%20extension,for%20a%20variety%20of%20platforms.
+https://kotlinlang.org/docs/native-overview.html
+https://www.reddit.com/r/Kotlin/comments/haxol7/kotlin_multiplatform_vs_kotlinnative/
+https://www.instabug.com/blog/react-native-vs-kotlin-mutliplatform-guide
+https://www.tableau.com/es-es/learn/articles/what-is-a-benchmark
+https://www.techtarget.com/searchcio/definition/benchmark
+https://benchmarksgame-team.pages.debian.net/benchmarksgame/index.html
+https://www.techempower.com/benchmarks/#section=data-r21&hw=ph&test=fortune
+https://hamy.xyz/labs/2023-10-your-programming-language-benchmark-is-wrong
+https://web-frameworks-benchmark.netlify.app/
+https://github.com/kostya/benchmarks
+https://github.com/PlummersSoftwareLLC/Primes
+https://programming-language-benchmarks.vercel.app/
+https://www.youtube.com/watch?v=pv4Yq35Chx0
+https://www.youtube.com/watch?v=O6KS9xvBmBo
+
