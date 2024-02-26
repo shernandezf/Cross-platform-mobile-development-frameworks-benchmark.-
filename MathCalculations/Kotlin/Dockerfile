@@ -5,7 +5,7 @@ FROM openjdk:8-jre-slim
 WORKDIR /app
 
 # Copy the JAR file into the container
-COPY HelloWorld.jar /app
+COPY MandelbrotsetCalc.jar /app
 
 # Command to run the application
-CMD ["java", "-jar", "HelloWorld.jar"]
+CMD ["java", "-jar", "MandelbrotsetCalc.jar"]

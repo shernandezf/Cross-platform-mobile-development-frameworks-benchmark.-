@@ -1,0 +1,8 @@
+kotlinc HelloWorld.kt -include-runtime -d HelloWorld.jar
+docker build -t helloworld-kotlin .
+docker run helloworld-kotlin
+
+
+flutter create hello_world_flutter
+docker build -t helloworld-flutter .
+docker run helloworld-flutter
