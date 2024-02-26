@@ -3,6 +3,6 @@ docker build -t helloworld-kotlin .
 docker run helloworld-kotlin
 
 
-flutter create hello_world_flutter
+flutter create mandelbrotset_flutter
 docker build -t helloworld-flutter .
 docker run helloworld-flutter
