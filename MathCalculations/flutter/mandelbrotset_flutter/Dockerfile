@@ -1,5 +1,5 @@
 # Use the official Flutter image as the base image
-FROM hkarhani/flutter:2.10.3
+FROM cirrusci/flutter:latest
 
 # Set the working directory inside the container
 WORKDIR /app

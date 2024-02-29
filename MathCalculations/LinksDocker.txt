@@ -4,5 +4,6 @@ docker run helloworld-kotlin
 
 
 flutter create mandelbrotset_flutter
-docker build -t helloworld-flutter .
+docker build -t mandelbrotset-flutter:f.c.1 .
 docker run helloworld-flutter
+
