@@ -27,13 +27,12 @@ fun main() {
                 zx = newZx
                 zy = newZy
                 iteration++
-            }
-
-            // Print the iteration count or some result to the console
-            println("($x, $y): $iteration")
+            }            
         }
     }
 
-    val elapsedTime = System.currentTimeMillis() - stopwatch
-    println("Execution time: $elapsedTime ms")
+    var elapsedTime = System.currentTimeMillis() - stopwatch
+    var formattedTime = String.format("%.2f", elapsedTime.toDouble())
+    formattedTime = formattedTime.replace(',', '.')
+    println("$formattedTime")
 }

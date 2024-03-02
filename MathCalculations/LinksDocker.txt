@@ -1,9 +1,12 @@
 kotlinc HelloWorld.kt -include-runtime -d HelloWorld.jar
-docker build -t helloworld-kotlin .
-docker run helloworld-kotlin
+docker build -t pelucapreb/tesis2024-dk:k.c.1 .
+docker run pelucapreb/tesis2024-dk:k.c.1
 
 
 flutter create mandelbrotset_flutter
 docker build -t mandelbrotset-flutter:f.c.1 .
 docker run helloworld-flutter
 
+
+docker tag mandelbrotsetcalc-kotlin:k.c.1 pelucapreb/tesis2024-dk:k.c.1
+push pelucapreb/tesis2024-dk:k.c.1
