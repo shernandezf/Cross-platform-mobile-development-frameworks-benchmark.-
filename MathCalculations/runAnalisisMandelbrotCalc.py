@@ -80,7 +80,7 @@ elif opciones.language.lower()=="all":
             width = 0.4)
  
     plt.xlabel("Tested programming languages")
-    plt.ylabel("Average obtain in the test")
+    plt.ylabel("Average millisenconds obtain in the test")
     plt.title("Average of programming languages performance in Mandelbrot set calculation ")
     plt.show()
 else:
