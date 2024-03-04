@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 parse = optparse.OptionParser()
 
 def get_arguments():
-    parse.add_option("-l", "--language", dest="language", help="language you want the analisis to run: eg kotlin. If you want to run a general analysis type: all")
+    parse.add_option("-l", "--language", dest="language", help="language you want the analisis to run: e.g: kotlin. If you want to run a general analysis type: all")
     (options, arguments) = parse.parse_args()
     return options 
 

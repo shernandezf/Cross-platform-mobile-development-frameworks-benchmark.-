@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 parse = optparse.OptionParser()
 
 def get_arguments():
-    parse.add_option("-l", "--language", dest="language", help="language you want the analisis to run: eg kotlin. If you want to run a general analysis type: all")
+    parse.add_option("-l", "--language", dest="language", help="language you want the analisis to run: e.g: kotlin. If you want to run a general analysis type: all")
     (options, arguments) = parse.parse_args()
     return options 
 
@@ -29,7 +29,7 @@ if opciones.language.lower()=="kotlin":
         sum_calc+=float(run_command("docker run pelucapreb/tesis2024-dk:k.c.2"))
     average=sum_calc/5
     average= round(average, 2)
-    print("Kotlin average runtime for the mandelbrot set calculation problem ",average ,"milliseconds")
+    print("Kotlin average runtime for the the prime number with Sieve of Eratosthenes algorithm calculation problem ",average ,"milliseconds")
 elif opciones.language.lower()=="javascript":
     average=0.0
     sum_calc=0.0
@@ -37,7 +37,7 @@ elif opciones.language.lower()=="javascript":
         sum_calc+=float(run_command("docker run pelucapreb/tesis2024-dk:js.c.2"))
     average=sum_calc/5
     average= round(average, 2)
-    print("JavaScript average runtime for the mandelbrot set calculation problem " ,average ,"milliseconds")
+    print("JavaScript average runtime for the the prime number with Sieve of Eratosthenes algorithm calculation problem " ,average ,"milliseconds")
 
 elif opciones.language.lower()=="dart":
     average=0.0
@@ -46,7 +46,7 @@ elif opciones.language.lower()=="dart":
         sum_calc+=float(run_command("docker run pelucapreb/tesis2024-dk:d.c.2"))
     average=sum_calc/5
     average= round(average, 2)
-    print("Dart average runtime for the mandelbrot set calculation problem " ,average ,"milliseconds")
+    print("Dart average runtime for the prime number with Sieve of Eratosthenes algorithm calculation problem " ,average ,"milliseconds")
     
 elif opciones.language.lower()=="all":
     average_kotlin=0.0

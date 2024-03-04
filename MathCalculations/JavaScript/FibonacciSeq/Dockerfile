@@ -1,0 +1,11 @@
+# Use the official Node.js image as the base image
+FROM node:hydrogen-slim
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy the JavaScript file to the container
+COPY Fibonacci.js .
+
+# Specify the command to run your JavaScript file
+CMD ["node", "Fibonacci.js"]
