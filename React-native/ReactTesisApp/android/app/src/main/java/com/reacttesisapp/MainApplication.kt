@@ -1,4 +1,4 @@
-package com.tesisbenchmarkreact
+package com.reacttesisapp
 
 import android.app.Application
 import com.facebook.react.PackageList

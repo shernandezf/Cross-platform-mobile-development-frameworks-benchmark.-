@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "TesisBenchmarkReact.app"
-               BlueprintName = "TesisBenchmarkReact"
-               ReferencedContainer = "container:TesisBenchmarkReact.xcodeproj">
+               BuildableName = "ReactTesisApp.app"
+               BlueprintName = "ReactTesisApp"
+               ReferencedContainer = "container:ReactTesisApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "TesisBenchmarkReactTests.xctest"
-               BlueprintName = "TesisBenchmarkReactTests"
-               ReferencedContainer = "container:TesisBenchmarkReact.xcodeproj">
+               BuildableName = "ReactTesisAppTests.xctest"
+               BlueprintName = "ReactTesisAppTests"
+               ReferencedContainer = "container:ReactTesisApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "TesisBenchmarkReact.app"
-            BlueprintName = "TesisBenchmarkReact"
-            ReferencedContainer = "container:TesisBenchmarkReact.xcodeproj">
+            BuildableName = "ReactTesisApp.app"
+            BlueprintName = "ReactTesisApp"
+            ReferencedContainer = "container:ReactTesisApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "TesisBenchmarkReact.app"
-            BlueprintName = "TesisBenchmarkReact"
-            ReferencedContainer = "container:TesisBenchmarkReact.xcodeproj">
+            BuildableName = "ReactTesisApp.app"
+            BlueprintName = "ReactTesisApp"
+            ReferencedContainer = "container:ReactTesisApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

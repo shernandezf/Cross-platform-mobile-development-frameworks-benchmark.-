@@ -74,9 +74,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.tesisbenchmarkreact"
+    namespace "com.reacttesisapp"
     defaultConfig {
-        applicationId "com.tesisbenchmarkreact"
+        applicationId "com.reacttesisapp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
