@@ -1,2 +1,2 @@
-npx react-native@latest init AwesomeProject
+npx react-native@latest init ReactTesisApp
 npx react-native run-android
