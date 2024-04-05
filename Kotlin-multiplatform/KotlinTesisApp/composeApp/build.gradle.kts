@@ -63,9 +63,18 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    signingConfigs {
+        create("release") {
+            keyAlias = "pelucapreb"
+            keyPassword = "123456789"
+            storeFile = file("D:/Escritorio/llave-apps") // Ensure to have the .jks extension if it's a Java KeyStore file
+            storePassword = "123456789"
+        }
+    }
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
+            signingConfig = signingConfigs.getByName("release")
         }
     }
     compileOptions {
