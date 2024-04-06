@@ -1,7 +1,7 @@
 import subprocess
 import optparse
 import matplotlib.pyplot as plt 
-
+import random
 parse = optparse.OptionParser()
 
 def get_arguments():
@@ -12,64 +12,64 @@ def get_arguments():
 
 def run_command(command):
     try:
-        # Run the command and capture the output
         result = subprocess.run(command, shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
         return result.stdout
     
     except subprocess.CalledProcessError as e:
-        # If the command fails, print the error
         print("Error:", e.stderr)
 
+def run_kotlin():
+    average=0.0
+    sum_calc=0.0
+    for i in range(5):
+        sum_calc+=float(run_command("docker run pelucapreb/tesis2024-dk:k.c.3"))
+    average=sum_calc/5
+    average= round(average, 2)
+    return average
+
+def run_dart():
+    average=0.0
+    sum_calc=0.0
+    for i in range(5):
+        sum_calc+=float(run_command("docker run pelucapreb/tesis2024-dk:d.c.3"))
+    average=sum_calc/5
+    average= round(average, 2)
+    return average
+
+def run_javaScript():
+    average=0.0
+    sum_calc=0.0
+    for i in range(5):
+        sum_calc+=float(run_command("docker run pelucapreb/tesis2024-dk:js.c.3"))
+    average=sum_calc/5
+    average= round(average, 2)
+    return average
 
 opciones = get_arguments()
 if opciones.language.lower()=="kotlin":
-    average=0.0
-    sum_calc=0.0
-    for i in range(5):
-        sum_calc+=float(run_command("docker run pelucapreb/tesis2024-dk:k.c.3"))
-    average=sum_calc/5
-    average= round(average, 2)
-    print("Kotlin average runtime for the Fibonacci sequence calculation problem ",average ,"milliseconds")
+    averageK=run_kotlin()
+    print("Kotlin average runtime for the Fibonacci sequence calculation problem ",averageK ,"milliseconds")
 elif opciones.language.lower()=="javascript":
-    average=0.0
-    sum_calc=0.0
-    for i in range(5):
-        sum_calc+=float(run_command("docker run pelucapreb/tesis2024-dk:js.c.3"))
-    average=sum_calc/5
-    average= round(average, 2)
-    print("JavaScript average runtime for the Fibonacci sequence calculation problem " ,average ,"milliseconds")
+    averageJ=run_javaScript()
+    print("JavaScript average runtime for the Fibonacci sequence calculation problem " ,averageJ ,"milliseconds")
 
 elif opciones.language.lower()=="dart":
-    average=0.0
-    sum_calc=0.0
-    for i in range(5):
-        sum_calc+=float(run_command("docker run pelucapreb/tesis2024-dk:d.c.3"))
-    average=sum_calc/5
-    average= round(average, 2)
-    print("Dart average runtime for the Fibonacci sequence calculation problem " ,average ,"milliseconds")
+    averageD=run_dart()
+    print("Dart average runtime for the Fibonacci sequence calculation problem " ,averageD ,"milliseconds")
     
 elif opciones.language.lower()=="all":
-    average_kotlin=0.0
-    sum_calc=0.0
-    for i in range(5):
-        sum_calc+=float(run_command("docker run pelucapreb/tesis2024-dk:k.c.3"))
-    average_kotlin=sum_calc/5
-    average_kotlin= round(average_kotlin, 2)
-
-    average_dart=0.0
-    sum_calc=0.0
-    for i in range(5):
-        sum_calc+=float(run_command("docker run pelucapreb/tesis2024-dk:d.c.3"))
-    average_dart=sum_calc/5
-    average_dart= round(average_dart, 2)
-
-    average_javaScript=0.0
-    sum_calc=0.0
-    for i in range(5):
-        sum_calc+=float(run_command("docker run pelucapreb/tesis2024-dk:js.c.3"))
-    average_javaScript=sum_calc/5
-    average_javaScript= round(average_javaScript, 2)
-
+    average_kotlin=0
+    average_dart=0
+    average_javaScript=0
+    list_functions=[run_kotlin,run_javaScript,run_dart]
+    random.shuffle(list_functions)
+    for i in list_functions:
+        if i == run_kotlin:
+            average_kotlin=i()
+        elif i == run_javaScript:
+            average_javaScript=i()
+        elif i == run_dart:
+            average_dart=i()  
     data = {'Kotlin':average_kotlin, 'Dart':average_dart, 'JavaScript':average_javaScript}
     languages = list(data.keys())
     averages = list(data.values())

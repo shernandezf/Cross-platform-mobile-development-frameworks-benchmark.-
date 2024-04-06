@@ -1,4 +1,4 @@
-kotlinc HelloWorld.kt -include-runtime -d HelloWorld.jar
+cd mkotlinc HelloWorld.kt -include-runtime -d HelloWorld.jar
 docker build -t pelucapreb/tesis2024-dk:k.c.1 .
 docker run pelucapreb/tesis2024-dk:k.c.1
 
