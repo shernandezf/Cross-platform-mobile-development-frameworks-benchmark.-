@@ -1,6 +1,15 @@
 npx react-native@latest init ReactTesisApp
+npx react-native init ReactTesisApp
+
+npx react-native init ReactTesisApp --version 0.70
+
 npx react-native run-android
+npx react-native start
+
+
+npm uninstall -g react-native-cli
+
 
 Measure-Command { adb install -r .\ReactTesisApp\android\app\build\outputs\apk\release\app-release.apk}
 
- Measure-Command { ./gradlew clean assembleRelease }
+Measure-Command { ./gradlew clean assembleRelease }
