@@ -1,75 +1,57 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tesis_app/videoplayerwidget.dart';
+import 'accelerometer.dart';
+import 'videoplayerwidget.dart';
+import 'proximitysensor.dart';
+
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      title: 'Navigation Demo',
+      home: MainScreen(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+class MainScreen extends StatelessWidget {
+  // Helper function for navigation
+  void _navigateToWidget(BuildContext context, Widget widget) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => widget));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
+      appBar: AppBar(title: Text("Main Screen")),
       body: Center(
-
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+            ElevatedButton(
+              onPressed: () => _navigateToWidget(
+                  context,
+                  VideoPlayerWidget(
+                      videoUrl:
+                          'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4')),
+              child: Text("Go to video player"),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+            ElevatedButton(
+              onPressed: () =>
+                  _navigateToWidget(context, ProximitySensorWidget()),
+              child: Text("Go to proximity sensor"),
             ),
-            const VideoPlayerWidget(videoUrl:'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'),
+            ElevatedButton(
+              onPressed: () =>
+                  _navigateToWidget(context, AccelerometerWidget()),
+              child: Text("Go to accelerometer"),
+            ),
           ],
-
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
