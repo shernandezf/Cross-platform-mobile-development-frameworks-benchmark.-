@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { SafeAreaView, Text, StyleSheet,View,Button  } from 'react-native';
+import { SafeAreaView, Text, StyleSheet,View,Button,Image  } from 'react-native';
 import Video, {VideoRef} from 'react-native-video';
 import { accelerometer, setUpdateIntervalForType, SensorTypes } from 'react-native-sensors';
 import proximity, { SubscriptionRef } from 'rn-proximity-sensor';
@@ -11,7 +11,13 @@ const Stack = createNativeStackNavigator();
 const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Elija que servicio quiere probar</Text>
+      <Image
+        source={{ uri: 'https://github.com/shernandezf/resources/blob/main/logo_andes.jpg?raw=true' }} 
+        style={styles.image}
+      />
+      <Text style={styles.hardText}>Tesis Pregrado 2024 Santiago Hernandez</Text>
+      <Text style={styles.text}>Profesor: Camilo Escobar Velasquez</Text>
+      
       <View style={styles.buttonContainer}>
         <Button
           title="Go to Accelerometer Sensor"
@@ -33,6 +39,7 @@ const HomeScreen = ({ navigation }) => {
     </View>
   );
 };
+
 const AccelerometerSensor = () => {
   // State for accelerometer data
   const [accelerometerData, setAccelerometerData] = useState({ x: 0, y: 0, z: 0 });
@@ -80,7 +87,12 @@ const ProximitySensor = () => {
     
     sensorSubscriptionRef.current = proximity.subscribe((values) => {
       setDistance(values.distance); 
-      setIsClose(values.is_close);  
+      if (values.distance==5){
+        setIsClose(false); 
+      }else if(values.distance<5){
+        setIsClose(true); 
+      }
+       
     });
 
   
@@ -101,7 +113,7 @@ const ProximitySensor = () => {
 };
 
 const VideoPlayer = () => {
-  const videoURL = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
+  const videoURL = 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
   const [loadingTime, setLoadingTime] = useState(null);
 
   const handleVideoLoad = () => {
@@ -133,7 +145,7 @@ const VideoPlayer = () => {
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="Home" screenOptions={{headerShown: false}}>
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="AccelerometerSensor" component={AccelerometerSensor} />
         <Stack.Screen name="ProximitySensor" component={ProximitySensor} />
@@ -159,10 +171,21 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     marginBottom: 20,
   },
+  hardText: {
+    fontSize: 21,
+    fontWeight: 'bold',  // This will make the text bold
+    marginBottom: 20,
+  },
   text: {
-    fontSize: 24,
+    fontSize: 18,
     fontWeight: '600',
     marginBottom: 20, 
+  },
+  image: {
+    width: 300,
+    height: 200, 
+    resizeMode: 'contain',
+    marginVertical: 20,
   },
   backgroundVideo: {
     width: '100%', 
