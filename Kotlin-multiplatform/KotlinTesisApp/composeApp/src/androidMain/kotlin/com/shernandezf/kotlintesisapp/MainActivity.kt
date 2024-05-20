@@ -17,10 +17,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -75,32 +79,49 @@ fun HomeScreen(navController: NavController) {
         // Image fetched from the internet
         AsyncImage(
             model = "https://github.com/shernandezf/resources/blob/main/logo_andes.jpg?raw=true",
-            contentDescription = null,
+            contentDescription = "University of los Andes logo",
+            modifier = Modifier
+                .size(240.dp)
         )
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(20.dp))
 
         Text(
-            text = "Tesis Pregrado 2024 Santiago Hernandez",
+            text = "Tesis Pregrado 2024 Santiago Hernández",
             fontWeight = FontWeight.Bold // This sets the text to be bold
         )
-        Text("Profesor: Camilo Escobar Velasquez.")
+        Spacer(modifier = Modifier.height(5.dp))
+        Text("Profesor: Camilo Escobar Velásquez")
 
-        Spacer(modifier = Modifier.height(20.dp))
-        Button(onClick = { navController.navigate("first") }) {
-            Text("Medición de video")
-        }
-        Spacer(modifier = Modifier.height(20.dp))
-        Button(onClick = { navController.navigate("second") }) {
-            Text("Medición sensor de proximidad")
-        }
-        Spacer(modifier = Modifier.height(20.dp))
-        Button(onClick = { navController.navigate("third") }) {
-            Text("Medición de sensor de acelerometro")
-        }
+        Spacer(modifier = Modifier.height(15.dp))
+        customButton(navController,"first","Video-Player",0xFFFFD700)
+        Spacer(modifier = Modifier.height(15.dp))
+        customButton(navController,"second","Accelerometer",0xFFFFD700)
+        Spacer(modifier = Modifier.height(15.dp))
+        customButton(navController,"third","Proximity Sensor",0xFFFFD700)
+
     }
 }
-
+@Composable
+fun customButton(
+    navController: NavController,
+    navigation: String, info:String,
+    backgroundColor: Long
+) {
+    Button(
+        onClick = { navController.navigate(navigation) },
+        colors = ButtonDefaults.buttonColors(
+            backgroundColor = Color(backgroundColor), // Yellow background
+            contentColor = Color.Black, // Black text color
+            disabledBackgroundColor = Color(0xFFF0F0F0), // Light gray background when disabled
+            disabledContentColor = Color(0xFF333333) // Dark gray text color when disabled
+        ),
+        shape = RoundedCornerShape(8.dp),
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Text(info)
+    }
+}
 @Preview
 @Composable
 fun AppAndroidPreview() {
