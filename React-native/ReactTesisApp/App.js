@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { SafeAreaView, Text, StyleSheet,View,Button,Image  } from 'react-native';
+import { SafeAreaView, Text, StyleSheet,View,Button,Image,Pressable  } from 'react-native';
 import Video, {VideoRef} from 'react-native-video';
 import { accelerometer, setUpdateIntervalForType, SensorTypes } from 'react-native-sensors';
 import proximity, { SubscriptionRef } from 'rn-proximity-sensor';
@@ -19,21 +19,24 @@ const HomeScreen = ({ navigation }) => {
       <Text style={styles.text}>Profesor: Camilo Escobar Velasquez</Text>
       
       <View style={styles.buttonContainer}>
-        <Button
-          title="Go to Accelerometer Sensor"
-          onPress={() => navigation.navigate('AccelerometerSensor')}
-        />
-      </View>
-      <View style={styles.buttonContainer}>
-        <Button
-          title="Go to Proximity Sensor"
-          onPress={() => navigation.navigate('ProximitySensor')}
-        />
-      </View>
-      <View style={styles.buttonContainer}>
-        <Button
-          title="Go to Video Player"
+        <CustomButton
           onPress={() => navigation.navigate('VideoPlayer')}
+          title="Video-Player"
+          backgroundColor="#ffdb00"
+        />
+      </View>
+      <View style={styles.buttonContainer}>
+        <CustomButton
+          onPress={() => navigation.navigate('AccelerometerSensor')}
+          title="Accelerometer"
+          backgroundColor="#ffdb00"
+        />
+      </View>
+      <View style={styles.buttonContainer}>
+        <CustomButton
+          onPress={() => navigation.navigate('ProximitySensor')}
+          title="Proximity Sensor"
+          backgroundColor="#ffdb00"
         />
       </View>
     </View>
@@ -111,7 +114,19 @@ const ProximitySensor = () => {
     </View>
   );
 };
-
+const CustomButton = ({ onPress , title, backgroundColor }) => {
+  return (
+    <Pressable
+        style={({ pressed }) => [
+          styles.button,
+          { backgroundColor: pressed ? '#ffdb00' : backgroundColor },
+        ]}
+        onPress={onPress}
+      >
+        <Text style={styles.buttonText}>{title}</Text>
+    </Pressable>
+  );
+};
 const VideoPlayer = () => {
   const videoURL = 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
   const [loadingTime, setLoadingTime] = useState(null);
@@ -163,34 +178,43 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   buttonContainer: {
-    marginTop: 10,  
-    width: '80%'    
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: '600',
-    marginBottom: 20,
+    marginVertical: 10,
+    width: '95%' , 
   },
   hardText: {
-    fontSize: 21,
-    fontWeight: 'bold',  // This will make the text bold
-    marginBottom: 20,
+    color: 'black',
+    fontSize: 16,
+    fontWeight: 'bold',  
+    marginBottom: 3,
   },
   text: {
-    fontSize: 18,
-    fontWeight: '600',
+    color: 'black',
+    fontSize: 14,
+    fontWeight: '400',
     marginBottom: 20, 
   },
   image: {
-    width: 300,
-    height: 200, 
+    width: '60%',
+    height: '45%', 
     resizeMode: 'contain',
-    marginVertical: 20,
+    marginVertical: 5,
   },
   backgroundVideo: {
     width: '100%', 
     height: '90%', 
-  }
+  },
+  button: {
+    paddingVertical: 8,
+    paddingHorizontal: 20,
+    borderRadius: 7, 
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonText: {
+    color: 'black',
+    fontWeight: '500',
+    fontSize: 16,
+  },
 });
 
 export default App;
