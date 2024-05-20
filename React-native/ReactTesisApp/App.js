@@ -15,8 +15,8 @@ const HomeScreen = ({ navigation }) => {
         source={{ uri: 'https://github.com/shernandezf/resources/blob/main/logo_andes.jpg?raw=true' }} 
         style={styles.image}
       />
-      <Text style={styles.hardText}>Tesis Pregrado 2024 Santiago Hernandez</Text>
-      <Text style={styles.text}>Profesor: Camilo Escobar Velasquez</Text>
+      <Text style={styles.hardText}>Tesis Pregrado 2024 Santiago Hernández</Text>
+      <Text style={styles.text}>Profesor: Camilo Escobar Velásquez</Text>
       
       <View style={styles.buttonContainer}>
         <CustomButton
@@ -197,7 +197,6 @@ const styles = StyleSheet.create({
     width: '60%',
     height: '45%', 
     resizeMode: 'contain',
-    marginVertical: 5,
   },
   backgroundVideo: {
     width: '100%', 
