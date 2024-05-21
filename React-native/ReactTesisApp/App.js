@@ -44,17 +44,14 @@ const HomeScreen = ({ navigation }) => {
 };
 
 const AccelerometerSensor = () => {
-  // State for accelerometer data
+ 
   const [accelerometerData, setAccelerometerData] = useState({ x: 0, y: 0, z: 0 });
 
-  
-  const threshold = 2.0; 
+  const threshold = 2.0;
 
   useEffect(() => {
-    
     setUpdateIntervalForType(SensorTypes.accelerometer, 400); // Update every 400ms
 
-    
     const subscription = accelerometer.subscribe(({ x, y, z }) => {
       if (Math.abs(x - accelerometerData.x) > threshold ||
           Math.abs(y - accelerometerData.y) > threshold ||
@@ -63,7 +60,6 @@ const AccelerometerSensor = () => {
       }
     });
 
-  
     return () => {
       subscription.unsubscribe();
     };
@@ -71,13 +67,11 @@ const AccelerometerSensor = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Accelerometer Data:</Text>
-      <Text style={styles.text}>X: {accelerometerData.x.toFixed(3)}</Text>
-      <Text style={styles.text}>Y: {accelerometerData.y.toFixed(3)}</Text>
-      <Text style={styles.text}>Z: {accelerometerData.z.toFixed(3)}</Text>
+      <Text style={styles.title}>Accelerometer:</Text>
+      <Text style={styles.text}>X: {accelerometerData.x.toFixed(3)} Y: {accelerometerData.y.toFixed(3)} Z: {accelerometerData.z.toFixed(3)}</Text>
     </View>
   );
-};
+}
 
 const ProximitySensor = () => {
   // State to store sensor data
@@ -180,6 +174,12 @@ const styles = StyleSheet.create({
   buttonContainer: {
     marginVertical: 10,
     width: '95%' , 
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#333333',
+    marginBottom: 10,
   },
   hardText: {
     color: 'black',

@@ -6,14 +6,15 @@ import androidx.compose.ui.platform.LocalContext
 import App
 import android.content.Context
 import android.os.Bundle
-
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.OptIn
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -62,8 +63,8 @@ fun MainScreen() {
             HomeScreen(navController = navController)
         }
         composable("first") { VideoPlayerComposable(context,"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4") }
-        composable("second") { ProximitySensorDisplay() }
-        composable("third") { AccelerometerView() }
+        composable("second") { AccelerometerView() }
+        composable("third") { ProximitySensorDisplay() }
     }
 }
 
@@ -127,6 +128,7 @@ fun customButton(
 fun AppAndroidPreview() {
     App()
 }
+
 @Composable
 fun AccelerometerView() {
     val context = LocalContext.current
@@ -141,8 +143,32 @@ fun AccelerometerView() {
             accelerometer.unregister()
         }
     }
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = Modifier.fillMaxSize()
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Text(
+                text = "Accelerometer:",
+                fontWeight = FontWeight.Bold,
+                fontSize = 24.sp,
+                color = Color.Black,
+            )
+            Spacer(modifier = Modifier.height(10.dp))
+            Text(
+                text = "X: %.3f, Y: %.3f, Z: %.3f".format(sensorValues[0], sensorValues[1], sensorValues[2]),
+                fontSize = 14.sp,
+                color = Color.Black
+            )
+        }
+    }
 
-    Text(text = "X: ${sensorValues[0]}, Y: ${sensorValues[1]}, Z: ${sensorValues[2]}")
+
+
+
 }
 @Composable
 fun ProximitySensorDisplay() {

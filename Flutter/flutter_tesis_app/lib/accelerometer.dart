@@ -42,15 +42,30 @@ class _AccelerometerWidgetState extends State<AccelerometerWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Accelerometer Test'),
+        title: Text(
+          '',
+        ),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Text('X-axis: ${x.toStringAsFixed(2)}'),
-            Text('Y-axis: ${y.toStringAsFixed(2)}'),
-            Text('Z-axis: ${z.toStringAsFixed(2)}'),
+            Text(
+              'Accelerometer:',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+            Text(
+              'X: ${x.toStringAsFixed(3)} Y: ${y.toStringAsFixed(3)} Z: ${z.toStringAsFixed(3)}',
+              style: TextStyle(
+                fontSize: 14,
+                color: Colors.black,
+              ),
+            ),
           ],
         ),
       ),
