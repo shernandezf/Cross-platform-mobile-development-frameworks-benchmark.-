@@ -11,8 +11,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.OptIn
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -27,6 +29,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.media3.common.MediaItem
@@ -62,9 +65,10 @@ fun MainScreen() {
         composable("home") {
             HomeScreen(navController = navController)
         }
-        composable("first") { VideoPlayerComposable(context,"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4") }
-        composable("second") { AccelerometerView() }
-        composable("third") { ProximitySensorDisplay() }
+        composable("video") { VideoPlayerComposable(context,"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4") }
+        composable("accelerometer") { AccelerometerView() }
+        composable("proximity") { ProximitySensorDisplay() }
+        composable("colors") { ColorBarWithTexts() }
     }
 }
 
@@ -95,11 +99,13 @@ fun HomeScreen(navController: NavController) {
         Text("Profesor: Camilo Escobar Velásquez")
 
         Spacer(modifier = Modifier.height(15.dp))
-        customButton(navController,"first","Video-Player",0xFFFFD700)
+        customButton(navController,"video","Video-Player",0xFFFFD700)
         Spacer(modifier = Modifier.height(15.dp))
-        customButton(navController,"second","Accelerometer",0xFFFFD700)
+        customButton(navController,"accelerometer","Accelerometer",0xFFFFD700)
         Spacer(modifier = Modifier.height(15.dp))
-        customButton(navController,"third","Proximity Sensor",0xFFFFD700)
+        customButton(navController,"proximity","Proximity Sensor",0xFFFFD700)
+        Spacer(modifier = Modifier.height(15.dp))
+        customButton(navController,"colors","Color Test",0xFFFFD700)
 
     }
 }
@@ -128,7 +134,49 @@ fun customButton(
 fun AppAndroidPreview() {
     App()
 }
+@Composable
+fun ColorBarWithTexts() {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp)
+    ) {
+        Text(
+            text = "Color test",
+            fontSize = 24.sp,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 8.dp),
+            textAlign = TextAlign.Center,
+            fontWeight = FontWeight.Bold
+        )
+        Spacer(modifier = Modifier.height(15.dp))
+        Box(modifier = Modifier
+            .fillMaxWidth()
+            .weight(30f)
+            .background(Color.Blue)
+        )
+        Spacer(modifier = Modifier.height(7.dp))
+        Box(modifier = Modifier
+            .fillMaxWidth()
+            .weight(30f)
+            .background(Color.Cyan)
+        )
+        Spacer(modifier = Modifier.height(7.dp))
+        Box(modifier = Modifier
+            .fillMaxWidth()
+            .weight(30f)
+            .background(Color.Green)
+        )
+        Spacer(modifier = Modifier.height(7.dp))
+        Box(modifier = Modifier
+            .fillMaxWidth()
+            .weight(30f)
+            .background(Color.Red)
+        )
 
+    }
+}
 @Composable
 fun AccelerometerView() {
     val context = LocalContext.current
@@ -177,7 +225,7 @@ fun ProximitySensorDisplay() {
     var proximityValue by remember { mutableFloatStateOf(0f) }
     val sensorManager = remember {
         ProximitySensor(context) { proximity ->
-            proximityData = if (proximity < 4) "Close" else "Far"
+            proximityData = if (proximity < 5) "Close" else "Far"
             proximityValue = proximity
         }
     }
@@ -188,9 +236,28 @@ fun ProximitySensorDisplay() {
             sensorManager.stopListening()
         }
     }
-    Column {
-        Text(text = "Proximity: $proximityData")
-        Text(text = "Proximity: $proximityValue")
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = Modifier.fillMaxSize()
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Text(
+                text = "Proximity Sensor",
+                fontWeight = FontWeight.Bold,
+                fontSize = 24.sp,
+                color = Color.Black,
+            )
+            Spacer(modifier = Modifier.height(10.dp))
+            Text(
+                text = "You are: $proximityData",
+                fontWeight = FontWeight.Bold,
+                fontSize = 14.sp,
+                color = Color.Black,
+            )
+        }
     }
 }
 @OptIn(UnstableApi::class) @Composable

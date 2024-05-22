@@ -103,8 +103,8 @@ const ProximitySensor = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Proximity Distance: {distance !== null ? `${distance} cm` : 'Unavailable'}</Text>
-      <Text style={styles.text}>Is Object Close: {isClose ? 'Yes' : 'No'}</Text>
+      <Text style={styles.title}>Proximity Sensor</Text>
+      <Text style={styles.hardText}>You are: {isClose ? 'Close' : 'Far'}</Text>
     </View>
   );
 };

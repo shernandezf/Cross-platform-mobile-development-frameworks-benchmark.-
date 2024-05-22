@@ -24,29 +24,25 @@ class _ProximitySensorWidgetState extends State<ProximitySensorWidget> {
   @override
   Widget build(BuildContext context) {
     // Determine text based on the proximity status
-    String proximityText = _isClose ? '0 cm' : 'Not Detected';
-    String closenessText = _isClose ? 'Is Close' : 'Is Far';
+    String closenessText = _isClose ? 'Close' : 'Far';
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Proximity Sensor Test'),
-        backgroundColor: _isClose
-            ? Colors.red
-            : Colors.blue, // Change color based on proximity
+        title: const Text(''),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'Distance: $proximityText',
+              'Proximity Sensor',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             Text(
-              closenessText,
+              'You are: $closenessText',
               style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: _isClose ? Colors.green : Colors.grey),
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ],
         ),
