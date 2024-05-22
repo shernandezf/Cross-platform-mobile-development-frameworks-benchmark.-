@@ -39,10 +39,28 @@ const HomeScreen = ({ navigation }) => {
           backgroundColor="#ffdb00"
         />
       </View>
+      <View style={styles.buttonContainer}>
+        <CustomButton
+          onPress={() => navigation.navigate('ColorBarInterface')}
+          title="Color Test"
+          backgroundColor="#ffdb00"
+        />
+      </View>
     </View>
   );
 };
 
+const ColorBarInterface = () => {
+  return (
+      <View style={styles.containerColor}>
+          <Text style={styles.headertext}>Color test</Text>
+          <View style={[styles.colorBlock, { backgroundColor: '#0000FF', }]} />  
+          <View style={[styles.colorBlock, { backgroundColor: '#00FFFF', }]} />  
+          <View style={[styles.colorBlock, { backgroundColor: '#00FF00', }]} />  
+          <View style={[styles.colorBlock, { backgroundColor: '#FF0000' }]} />  
+      </View>
+  );
+};
 const AccelerometerSensor = () => {
  
   const [accelerometerData, setAccelerometerData] = useState({ x: 0, y: 0, z: 0 });
@@ -159,6 +177,7 @@ const App = () => {
         <Stack.Screen name="AccelerometerSensor" component={AccelerometerSensor} />
         <Stack.Screen name="ProximitySensor" component={ProximitySensor} />
         <Stack.Screen name="VideoPlayer" component={VideoPlayer} />
+        <Stack.Screen name="ColorBarInterface" component={ColorBarInterface} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -170,6 +189,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#fff',
+  },
+  containerColor: {
+    flex: 1,
+    justifyContent: 'center',
+    padding: 20,
   },
   buttonContainer: {
     marginVertical: 10,
@@ -214,6 +238,18 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontSize: 16,
   },
+  headertext: {
+    color: 'black',
+    fontWeight: 'bold',
+    fontSize: 24,
+    textAlign: 'center',
+    marginBottom: 20,  
+  },
+  colorBlock: {
+    flex: 0.25,
+    width: '100%', 
+    marginVertical: 5, 
+}
 });
 
 export default App;

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'accelerometer.dart';
 import 'videoplayerwidget.dart';
 import 'proximitysensor.dart';
+import 'color.dart';
 
 void main() {
   runApp(MyApp());
@@ -98,6 +99,28 @@ class MainScreen extends StatelessWidget {
                 onPressed: () =>
                     _navigateToWidget(context, ProximitySensorWidget()),
                 child: Text("Proximity Sensor"),
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(
+                      Color(0xFFFFD700)), // Strong yellow color
+                  foregroundColor:
+                      MaterialStateProperty.all<Color>(Colors.black),
+                  minimumSize: MaterialStateProperty.all<Size>(Size(
+                      MediaQuery.of(context).size.width * 0.92,
+                      MediaQuery.of(context).size.height * 0.06)),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(
+                          7), // Change the degree of corner rounding
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 10.0),
+              child: ElevatedButton(
+                onPressed: () => _navigateToWidget(context, ColorTestPage()),
+                child: Text("Color Test"),
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all<Color>(
                       Color(0xFFFFD700)), // Strong yellow color
