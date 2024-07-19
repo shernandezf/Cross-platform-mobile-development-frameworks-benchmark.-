@@ -10,6 +10,6 @@ npx react-native start
 npm uninstall -g react-native-cli
 
 
-Measure-Command { adb install -r .\ReactTesisApp\android\app\build\outputs\apk\release\app-release.apk}
+Measure-Command { adb install -r .\React-native\ReactTesisApp\android\app\build\outputs\apk\release\app-release.apk}
 
 Measure-Command { ./gradlew clean assembleRelease }

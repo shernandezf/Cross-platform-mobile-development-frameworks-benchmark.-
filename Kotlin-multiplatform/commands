@@ -1,4 +1,4 @@
 ./gradlew :composeApp:installDebug
 ./gradlew assembleRelease
 Measure-Command { ./gradlew clean assembleRelease }
-Measure-Command { adb install -r .\KotlinTesisApp\composeApp\build\outputs\apk\release\composeApp-release.apk }
+Measure-Command { adb install -r .\Kotlin-multiplatform\KotlinTesisApp\composeApp\build\outputs\apk\release\composeApp-release.apk }
