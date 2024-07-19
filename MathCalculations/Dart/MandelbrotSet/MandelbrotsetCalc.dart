@@ -11,7 +11,6 @@ void main() {
   final double dx = (xmax - xmin) / (width - 1);
   final double dy = (ymax - ymin) / (height - 1);
 
-  // Create a Stopwatch to measure time
   final stopwatch = Stopwatch()..start();
 
   for (int y = 0; y < height; y++) {
@@ -29,7 +28,6 @@ void main() {
         zy = newZy;
         iteration++;
       }
-      
     }
   }
 
