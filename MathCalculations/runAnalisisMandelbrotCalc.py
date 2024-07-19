@@ -79,9 +79,9 @@ elif opciones.language.lower()=="all":
     plt.bar(languages, averages, color ='blue', 
             width = 0.4)
  
-    plt.xlabel("Tested programming languages")
-    plt.ylabel("Average millisenconds obtain in the test")
-    plt.title("Average of programming languages performance in the mandelbrot set calculation problem ")
+    plt.xlabel("Lenguajes de programación")
+    plt.ylabel("Milisegundos en promedio obtenidos en las pruebas")
+    plt.title("Promedio del desempeño de los lenguajes de programación para el Conjunto de Mandelbrot")
     plt.show()
 else:
     print("Invalid option.")
